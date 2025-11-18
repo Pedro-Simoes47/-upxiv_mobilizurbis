@@ -5,7 +5,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Execução (Run)
-FROM openjdk:17-jdk-slim
+# MUDANÇA AQUI: Usando Eclipse Temurin (mais leve e atual)
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 # Copia o arquivo .jar gerado na etapa anterior
 COPY --from=build /app/target/*.jar app.jar
